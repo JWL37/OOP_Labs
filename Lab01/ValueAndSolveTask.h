@@ -2,5 +2,6 @@
 
 #include <string>
 
-bool isValue(std::string);
+std::string trySwapAtoBorBtoA(std::string );
+void isCorrectLine(std::string);
 std::string swapAtoBorBtoA(std::string );

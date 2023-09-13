@@ -1,14 +1,25 @@
 #include <iostream>
-#include "functions.h"
+#include "ValueAndSolveTask.h"
 
-bool isValue(std::string line){
+std::string trySwapAtoBorBtoA(std::string line){
+    try
+    {
+        isCorrectLine(line);
+        return swapAtoBorBtoA(line);
+    }
+    catch(const std::invalid_argument& e)
+    {
+        return  e.what();
+    }
+    
+}
+
+void isCorrectLine(std::string line){
     for (char elemLine :line){
         if (elemLine!='a' and elemLine!='b' and elemLine!='c'){
-            std::cout<<"Another Symbol"<<std::endl;
-            return false;
+            throw std::invalid_argument( "Received another symbol!!!" );
         }
     }
-    return true;
 }
 
 std::string swapAtoBorBtoA(std::string line){

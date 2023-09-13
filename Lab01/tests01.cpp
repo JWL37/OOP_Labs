@@ -1,70 +1,96 @@
 #include <gtest/gtest.h>
-#include "functions.h"
+#include "ValueAndSolveTask.h"
 
 TEST(test_check_func_swapAtoBorBtoA,test_check_for_ordinary_input)
 {
-    ASSERT_TRUE(swapAtoBorBtoA("acb")=="bca");
+    std::string line="acb";
+    std::string result=swapAtoBorBtoA(line);
+    ASSERT_EQ("bca",result);
 }
 
 TEST(test_check_func_swapAtoBorBtoA,test_check_for_only_c)
 {
-    ASSERT_TRUE(swapAtoBorBtoA("ccc")=="ccc");
+    std::string line="ccc";
+    std::string result=swapAtoBorBtoA(line);
+    ASSERT_EQ("ccc",result);
 }
 
 TEST(test_check_func_swapAtoBorBtoA,test_check_for_only_a)
 {
-    ASSERT_TRUE(swapAtoBorBtoA("a")=="b");
+    std::string line="a";
+    std::string result=swapAtoBorBtoA(line);
+    ASSERT_EQ("b",result);
 }
 
 TEST(test_check_func_swapAtoBorBtoA,test_check_for_only_b)
 {
-    ASSERT_TRUE(swapAtoBorBtoA("bbb")=="aaa");
+    std::string line="bbb";
+    std::string result=swapAtoBorBtoA(line);
+    ASSERT_EQ("aaa",result);
 }
 
 
 TEST(test_check_func_swapAtoBorBtoA,test_check_for_only_ab)
 {
-    ASSERT_TRUE(swapAtoBorBtoA("baba")=="abab");
+    std::string line="baba";
+    std::string result=swapAtoBorBtoA(line);
+    ASSERT_EQ("abab",result);
 }
 
-TEST(test_check_func_isValue,test_check_for_number)
+TEST(test_check_func_trySwapAtoBorBtoA,test_check_for_number)
 {
-    ASSERT_TRUE(isValue("abc7")==false);
+    std::string line="abc7";
+    std::string result=trySwapAtoBorBtoA(line);
+    ASSERT_EQ("Received another symbol!!!",result);
 }
 
-TEST(test_check_func_isValue,test_check_for_another_symbol_brackets)
+TEST(test_check_func_trySwapAtoBorBtoA,test_check_for_another_symbol_brackets)
 {
-    ASSERT_TRUE(isValue("abbb{cccaa}")==false);
+    std::string line="abbb{cccaa}";
+    std::string result=trySwapAtoBorBtoA(line);
+    ASSERT_EQ("Received another symbol!!!",result);
 }
 
-TEST(test_check_func_isValue,test_check_for_another_symbol_cobachka)
+TEST(test_check_func_trySwapAtoBorBtoA,test_check_for_another_symbol_cobachka)
 {
-    ASSERT_TRUE(isValue("aa@a")==false);
+    std::string line="aa@a";
+    std::string result=trySwapAtoBorBtoA(line);
+    ASSERT_EQ("Received another symbol!!!",result);
 }
 
-TEST(test_check_func_isValue,test_check_for_only_another_symbol)
+TEST(test_check_func_trySwapAtoBorBtoA,test_check_for_only_another_symbol)
 {
-    ASSERT_TRUE(isValue("%")==false);
+    std::string line="%";
+    std::string result=trySwapAtoBorBtoA(line);
+    ASSERT_EQ("Received another symbol!!!",result);
 }
 
-TEST(test_check_func_isValue,test_check_for_another_alphabet)
+TEST(test_check_func_trySwapAtoBorBtoA,test_check_for_another_alphabet)
 {
-    ASSERT_TRUE(isValue("aа")==false); // вторая а c русской раскладки
+    std::string line="aа";// вторая а c русской раскладки
+    std::string result=trySwapAtoBorBtoA(line);
+    ASSERT_EQ("Received another symbol!!!",result);
 }
 
-TEST(test_check_func_isValue,test_check_for_upper_letter)
+TEST(test_check_func_trySwapAtoBorBtoA,test_check_for_upper_letter)
 {
-    ASSERT_TRUE(isValue("AABBC")==false);
+    std::string line="AABBC";
+    std::string result=trySwapAtoBorBtoA(line);
+    ASSERT_EQ("Received another symbol!!!",result);
 }
 
-TEST(test_check_func_isValue,test_check_for_space)
+TEST(test_check_func_trySwapAtoBorBtoA,test_check_for_space)
 {
-    ASSERT_TRUE(isValue("cac cbc")==false);
+    std::string line="cac cbc";
+    std::string result=trySwapAtoBorBtoA(line);
+    ASSERT_EQ("Received another symbol!!!",result);
 }
 
-TEST(test_check_func_isValue,test_correct_line)
+TEST(test_check_func_trySwapAtoBorBtoA,test_correct_line)
 {
-    ASSERT_TRUE(isValue("abbabcbbccccca")==true);
+    std::string line="abbabcbbccccca";
+    std::string result=trySwapAtoBorBtoA(line);
+    ASSERT_EQ("baabacaacccccb",result);
 }
 
 int main(int argc, char **argv) {
