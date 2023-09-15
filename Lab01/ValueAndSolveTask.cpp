@@ -16,7 +16,6 @@ std::string trySwapAtoBorBtoA(std::string line){
 bool isCorrectLine(std::string line){
     for (char elemLine :line){
         if (elemLine!='a' and elemLine!='b' and elemLine!='c'){
-            throw std::invalid_argument( "Received another symbol!!!" );
             return false;
         }
     }
