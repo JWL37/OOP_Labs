@@ -27,19 +27,13 @@ std::string swapAtoBorBtoA(std::string line){
     if (!isCorrectLine(line))
         throw std::invalid_argument( "Received another symbol!!!" );
     std::string result_line {""};
-    for (char elemLine :line){
-        switch (elemLine)
-        {
-        case 'a':
-            result_line+='b';
-            break;
-        case 'b':
-            result_line+='a';
-            break;
-        default:
-            result_line+=elemLine;
-            break;
+    for (int i=0;i<line.size();++i){
+        if (line[i]=='a'){
+            line[i]='b';
+        }
+        else if (line[i]=='b'){
+            line[i]='a';
         }
     }
-    return result_line;
+    return line;
 }
