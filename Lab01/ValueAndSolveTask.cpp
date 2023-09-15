@@ -4,7 +4,6 @@
 std::string trySwapAtoBorBtoA(std::string line){
     try
     {
-        isCorrectLine(line);
         return swapAtoBorBtoA(line);
     }
     catch(const std::invalid_argument& e)
@@ -14,15 +13,19 @@ std::string trySwapAtoBorBtoA(std::string line){
     
 }
 
-void isCorrectLine(std::string line){
+bool isCorrectLine(std::string line){
     for (char elemLine :line){
         if (elemLine!='a' and elemLine!='b' and elemLine!='c'){
             throw std::invalid_argument( "Received another symbol!!!" );
+            return false;
         }
     }
+    return true;
 }
 
 std::string swapAtoBorBtoA(std::string line){
+    if (!isCorrectLine(line))
+        throw std::invalid_argument( "Received another symbol!!!" );
     std::string result_line {""};
     for (char elemLine :line){
         switch (elemLine)

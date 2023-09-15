@@ -3,5 +3,5 @@
 #include <string>
 
 std::string trySwapAtoBorBtoA(std::string );
-void isCorrectLine(std::string);
+bool isCorrectLine(std::string);
 std::string swapAtoBorBtoA(std::string );
