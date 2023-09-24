@@ -1,6 +1,24 @@
 #include <gtest/gtest.h>
 #include "ValueAndSolveTask.h"
 
+class CorrectLineParameterizedTestFixture :public ::testing::TestWithParam<std::string> {
+protected:
+    std::string line;
+};
+
+TEST_P(CorrectLineParameterizedTestFixture, CheckIsCorrectLines) {
+    std::string line = GetParam();
+    bool result=isCorrectLine(line);
+    ASSERT_EQ(true,result);
+}
+
+INSTANTIATE_TEST_CASE_P(
+        CorrectLineTests,
+        CorrectLineParameterizedTestFixture,
+        ::testing::Values(
+                "abc", "ccc", "aaa", "b"
+        ));
+
 TEST(test_check_func_swapAtoBorBtoA,test_check_for_ordinary_input)
 {
     std::string line="acb";
