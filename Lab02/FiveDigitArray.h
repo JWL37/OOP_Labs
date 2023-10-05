@@ -3,9 +3,6 @@
 #include <string>
 #include <iostream>
 
-void TryCheckCorrectInput(std::string ,std::string );
-void checkCorrectInput(std::string ,std::string );
-
 class FiveDigitArray
 {
 public:

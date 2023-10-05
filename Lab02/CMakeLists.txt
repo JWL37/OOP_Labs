@@ -7,7 +7,7 @@ include_directories(${GTEST_INCLUDE_DIRS})
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_executable(task01 main.cpp  FiveDigitArray.cpp)
+add_executable(task01 main.cpp  outputLab.cpp FiveDigitArray.cpp)
 
 
 enable_testing()

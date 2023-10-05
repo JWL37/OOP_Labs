@@ -1,35 +1,9 @@
 #include "FiveDigitArray.h"
 #include <iostream>
 
-void checkCorrectInput(std::string num1,std::string num2){
-    for (char& elem : num1){
-        if (elem<'0' or elem>'4'){
-            throw std::invalid_argument("Invalid character in the five-digit array");
-        }
-    }
-    for (char& elem : num2){
-        if (elem<'0' or elem>'4'){
-            throw std::invalid_argument("Invalid character in the five-digit array");
-        }
-    }
-}
-
-void TryCheckCorrectInput(std::string num1,std::string num2){
-    try
-    {
-        checkCorrectInput(num1,num2);
-    }
-    catch(const std::invalid_argument &e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-}
-
-
-
 FiveDigitArray::FiveDigitArray() : _size(0), _array{nullptr}
 {
-    std::cout << "Default constructor" << std::endl;
+    // std::cout << "Default constructor" << std::endl;
 }
 
 FiveDigitArray::FiveDigitArray(const size_t &n, unsigned char symbol)
@@ -110,7 +84,7 @@ FiveDigitArray FiveDigitArray::decimalToFiveDigit(int &decimalValue)
 int FiveDigitArray::toDecimal()
 {
     int decimalValue = 0;
-    int power = 1; 
+    int power = 1;
 
     for (int i = _size - 1; i >= 0; --i)
     {
@@ -129,9 +103,9 @@ int FiveDigitArray::toDecimal()
 }
 FiveDigitArray &FiveDigitArray::operator=(const FiveDigitArray &other)
 {
-    if (this != &other) 
+    if (this != &other)
     {
-        
+
         if (_size > 0)
         {
             delete[] _array;
@@ -139,7 +113,6 @@ FiveDigitArray &FiveDigitArray::operator=(const FiveDigitArray &other)
             _array = nullptr;
         }
 
-     
         _size = other._size;
         _array = new unsigned char[_size];
 
@@ -216,6 +189,3 @@ FiveDigitArray::~FiveDigitArray() noexcept
         _array = nullptr;
     }
 }
-
-
-
