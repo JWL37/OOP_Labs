@@ -3,7 +3,6 @@
 #include <string>
 #include <iostream>
 
-
 class FiveDigitArray
 {
 public:
@@ -16,7 +15,6 @@ public:
 
     int toDecimal();
     FiveDigitArray decimalToFiveDigit(int &decimalValue);
-
     FiveDigitArray &operator=(const FiveDigitArray &other);
     FiveDigitArray operator+(FiveDigitArray &other);
     FiveDigitArray operator-(FiveDigitArray &other);
@@ -25,14 +23,11 @@ public:
     bool operator<(FiveDigitArray &other);
     std::ostream &print(std::ostream &os);
 
+    size_t get_size();
+    std::string get_array();
     virtual ~FiveDigitArray() noexcept;
-
-    
 
 private:
     size_t _size;
     unsigned char *_array;
 };
-
-
-// checkCorrectNums(std::string ,std::string);

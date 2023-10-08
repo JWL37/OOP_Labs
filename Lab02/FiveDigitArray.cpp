@@ -180,6 +180,21 @@ bool FiveDigitArray::operator<(FiveDigitArray &other)
     return thisDecimal < otherDecimal;
 }
 
+size_t FiveDigitArray::get_size()
+{
+    return _size;
+}
+std::string FiveDigitArray::get_array()
+{
+    std::string str_array = "";
+    for (size_t i = 0; i < _size; ++i)
+    {
+        str_array.push_back(_array[i]);
+    }
+
+    return str_array;
+}
+
 FiveDigitArray::~FiveDigitArray() noexcept
 {
     if (_size > 0)
