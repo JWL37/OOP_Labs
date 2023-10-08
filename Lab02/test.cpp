@@ -7,10 +7,11 @@ class isEqualParameterizedTest : public ::testing::TestWithParam<std::tuple<std:
 
 TEST_P(isEqualParameterizedTest, CheckIsEquals)
 {
-    bool expected = std::get<2>(GetParam());
     FiveDigitArray first(std::get<0>(GetParam()));
     FiveDigitArray second(std::get<1>(GetParam()));
-    ASSERT_EQ(expected, first == second);
+    bool expected = std::get<2>(GetParam());
+    bool result = first == second;
+    ASSERT_EQ(expected, result);
 }
 
 INSTANTIATE_TEST_CASE_P(
@@ -28,10 +29,11 @@ class isMoreParameterizedTest : public ::testing::TestWithParam<std::tuple<std::
 
 TEST_P(isMoreParameterizedTest, CheckIsMore)
 {
-    bool expected = std::get<2>(GetParam());
     FiveDigitArray first(std::get<0>(GetParam()));
     FiveDigitArray second(std::get<1>(GetParam()));
-    ASSERT_EQ(expected, first > second);
+    bool expected = std::get<2>(GetParam());
+    bool result = first > second;
+    ASSERT_EQ(expected, result);
 }
 
 INSTANTIATE_TEST_CASE_P(
@@ -48,10 +50,11 @@ class isLessParameterizedTest : public ::testing::TestWithParam<std::tuple<std::
 
 TEST_P(isLessParameterizedTest, CheckIsMore)
 {
-    bool expected = std::get<2>(GetParam());
     FiveDigitArray first(std::get<0>(GetParam()));
     FiveDigitArray second(std::get<1>(GetParam()));
-    ASSERT_EQ(expected, first < second);
+    bool expected = std::get<2>(GetParam());
+    bool result = first < second;
+    ASSERT_EQ(expected, result);
 }
 
 INSTANTIATE_TEST_CASE_P(
@@ -68,10 +71,11 @@ class sumFiveParameterizedTest : public ::testing::TestWithParam<std::tuple<std:
 
 TEST_P(sumFiveParameterizedTest, CheckSumFive)
 {
-    FiveDigitArray expected(std::get<2>(GetParam()));
     FiveDigitArray first(std::get<0>(GetParam()));
     FiveDigitArray second(std::get<1>(GetParam()));
-    ASSERT_EQ(expected, first + second);
+    FiveDigitArray expected(std::get<2>(GetParam()));
+    FiveDigitArray result = first + second;
+    ASSERT_EQ(expected, result);
 }
 
 INSTANTIATE_TEST_CASE_P(
@@ -89,10 +93,11 @@ class subtractFiveParameterizedTest : public ::testing::TestWithParam<std::tuple
 
 TEST_P(subtractFiveParameterizedTest, CheckSubtractFive)
 {
-    FiveDigitArray expected(std::get<2>(GetParam()));
     FiveDigitArray first(std::get<0>(GetParam()));
     FiveDigitArray second(std::get<1>(GetParam()));
-    ASSERT_EQ(expected, first - second);
+    FiveDigitArray expected(std::get<2>(GetParam()));
+    FiveDigitArray result = first - second;
+    ASSERT_EQ(expected, result);
 }
 
 INSTANTIATE_TEST_CASE_P(
@@ -102,6 +107,46 @@ INSTANTIATE_TEST_CASE_P(
         std::make_tuple("14", "14", "0"),
         std::make_tuple("0", "0", "0"),
         std::make_tuple("12", "3", "4")));
+
+class getSizeFiveParameterizedTest : public ::testing::TestWithParam<std::tuple<std::string, size_t>>
+{
+};
+
+TEST_P(getSizeFiveParameterizedTest, CheckGetSizeFive)
+{
+    FiveDigitArray fiveDigitArray_(std::get<0>(GetParam()));
+    size_t expected_size = std::get<1>(GetParam());
+    size_t result = fiveDigitArray_.get_size();
+    ASSERT_EQ(expected_size, result);
+}
+
+INSTANTIATE_TEST_CASE_P(
+    getSizeFiveTests,
+    getSizeFiveParameterizedTest,
+    ::testing::Values(
+        std::make_tuple("1431242413", 10),
+        std::make_tuple("0", 1),
+        std::make_tuple("123", 3)));
+
+class getArrayFiveParameterizedTest : public ::testing::TestWithParam<std::tuple<std::string, std::string>>
+{
+};
+
+TEST_P(getArrayFiveParameterizedTest, CheckGetArrayFive)
+{
+    FiveDigitArray fiveDigitArray_(std::get<0>(GetParam()));
+    std::string expected_array = std::get<1>(GetParam());
+    std::string result = fiveDigitArray_.get_array();
+    ASSERT_EQ(expected_array, result);
+}
+
+INSTANTIATE_TEST_CASE_P(
+    getArrayFiveTests,
+    getArrayFiveParameterizedTest,
+    ::testing::Values(
+        std::make_tuple("1431242413", "1431242413"),
+        std::make_tuple("0", "0"),
+        std::make_tuple("123", "123")));
 
 int main(int argc, char **argv)
 {
