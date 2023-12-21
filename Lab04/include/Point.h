@@ -61,12 +61,6 @@ public:
     }
 
 
-    static bool areCollinear(const Point<T>& point1, const Point<T>& point2, const Point<T>& point3) {
-        double slope1 = (point2._y - point1._y) / (point2._x - point1._x);
-        double slope2 = (point3._y - point2._y) / (point3._x - point2._x);
-
-        return slope1 == slope2;
-    }
 
 private:
     T _x;

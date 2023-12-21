@@ -45,7 +45,7 @@ public:
 protected:
     Figure() = default;
 
-    explicit Figure(const std::vector<Point<T>>& points) : _points(points) {};
+    Figure(const std::vector<Point<T>>& points) : _points(points) {};
 
     double triangleArea(const Point<T>& point1, const Point<T>& point2, const Point<T>& point3) const {
         double a = point1.distanceBetweenPoints(point2);

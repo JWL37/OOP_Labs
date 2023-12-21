@@ -51,11 +51,6 @@ public:
 
     std::istream& operator>>(std::istream& input) override {
         this->_points.clear();
-        //        for (int i = 0; i < 5; ++i) {
-        //            Point<T> point;
-        //            input >> point;
-        //            this->_points.push_back(point);
-        //        }
         PentagonValidator<T> validator;
         FigureValidator<T>::validateFigure(static_cast<const IFigureValidator<T>*>(&validator), this->_points);
         return input;
@@ -86,11 +81,7 @@ public:
         return Point<T>(centerX, centerY);
     }
 
-    //    static Pentagon<T>* createPentagon(const std::vector<Point<T>>& points) {
-    //        PentagonValidator<T> pentagonValidator;
-    //        FigureValidator<T>::validateFigure(static_cast<const IFigureValidator<T>*> (&pentagonValidator), points);
-    //        return new Pentagon<T>(points);
-    //    }
+
 
     Figure<T>* createFigureWithPoints(const std::vector<Point<T>>& points) const override {
         PentagonValidator<T> pentagonValidator;

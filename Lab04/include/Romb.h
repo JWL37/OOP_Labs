@@ -62,7 +62,7 @@ public:
     double area() const override {
         double area = 0.0;
 
-        for (int i{0}; i < 6; ++i) {
+        for (int i{0}; i < 2; ++i) {
             area += this->triangleArea(this->_points[0], this->_points[i + 1], this->_points[i + 2]);
         }
 
@@ -83,12 +83,7 @@ public:
 
         return Point<T>(centerX, centerY);
     }
-//
-//    static Romb<T>* createRomb(const std::vector<Point<T>>& points) {
-//        RombValidator<T> RombValidator;
-//        FigureValidator<T>::validateFigure(static_cast<const IFigureValidator<T>*> (&RombValidator), points);
-//        return new Romb<T>(points);
-//    }
+
 
     Figure<T>* createFigureWithPoints(const std::vector<Point<T>>& points) const override {
         RombValidator<T> RombValidator;

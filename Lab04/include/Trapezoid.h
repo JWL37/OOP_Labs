@@ -78,7 +78,7 @@ public:
     {
         double area = 0.0;
 
-        for (int i{0}; i < 4; ++i)
+        for (int i{0}; i < 2; ++i)
         {
             area += this->triangleArea(this->_points[0], this->_points[i + 1], this->_points[i + 2]);
         }
